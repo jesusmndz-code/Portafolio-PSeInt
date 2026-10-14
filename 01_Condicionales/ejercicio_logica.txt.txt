@@ -1,0 +1,24 @@
+// Algoritmo: Registro_Y_Validacion_Usuarios
+// Propósito: Simular la lógica de espera que estás viviendo con Ligo.
+
+Algoritmo ValidacionIdentidad
+    Definir nombre_usuario Como Texto
+    Definir documentos_enviados Como Logico
+    Definir estado_verificacion Como Texto
+    
+    nombre_usuario <- "Jesus Mendoza"
+    documentos_enviados <- Verdadero
+    estado_verificacion <- "En Espera"
+    
+    Escribir "Revisando perfil de: ", nombre_usuario
+    
+    Si documentos_enviados = Verdadero Entonces
+        Si estado_verificacion = "Aprobado" Entonces
+            Escribir "Resultado: Cuenta Activa. Puedes proceder con la recarga."
+        Sino
+            Escribir "Resultado: Identidad en proceso de revision. Por favor, espere."
+        FinSi
+    Sino
+        Escribir "Resultado: Error. Debe subir sus documentos primero."
+    FinSi
+FinAlgoritmo

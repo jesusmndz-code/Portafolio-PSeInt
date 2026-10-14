@@ -1,0 +1,11 @@
+Algoritmo calculo_media_de_notas
+	definir matematica1, fisica2, quimica3, notamedia Como Real
+ 	escribir  "dime tu nota de matematica1"
+	leer matematica1
+	escribir "perfecto, ahora dime tu nota de fisica"
+	leer fisica2
+	escribir "genial, ajora dime tu nota de quimica"
+	leer quimica3
+	notamedia = ( matematica1 + fisica2 + quimica3 ) / 3
+	escribir "tu nota media es;" notamedia
+FinAlgoritmo
