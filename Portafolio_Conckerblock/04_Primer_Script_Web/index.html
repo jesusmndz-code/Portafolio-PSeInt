@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Primer Despliegue Lógico - conckerblock</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; text-align: center; padding: 50px; }
+        .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: inline-block; }
+        button { background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Evaluador de Vacantes Remotas</h1>
+        <p>Este es mi primer laboratorio interactivo de <strong>HTML, CSS y JavaScript</strong>.</p>
+        <p style="color: #6c757d; font-size: 14px;">Academia: conckerblock</p>
+        <button onclick="evaluarVacante()">Iniciar Algoritmo</button>
+        <h3 id="resultado" style="color: #007bff; margin-top: 20px;"></h3>
+    </div>
+
+    <script>
+        // Traduciendo la lógica de PSeInt a JavaScript comercial
+        function evaluarVacante() {
+            let nombreVacante = "Desarrollador Junior Remoto";
+            let exigeIngles = false;
+            let esRemoto = true;
+            
+            // Estructura condicional idéntica al "Si... Entonces"
+            if (esRemoto === true && exigeIngles === false) {
+                document.getElementById("resultado").innerText = "ESTADO: ¡Postular inmediatamente! El perfil se adapta a mis cimientos lógicos.";
+            } else {
+                document.getElementById("resultado").innerText = "ESTADO: Archivar vacante temporalmente.";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+Algoritmo tarjeta_del_usuario
+	definir preciotorta, cantidadcomprada, descuento Como Real
+	escribir "dime el precio de la torta"
+	leer preciotorta
+	escribir "perfecto. ahora dime que cantidad compraste"
+	leer cantidadcomprada
+	escribir "el total a pagar es" , preciotorta * cantidadcomprada
+	Escribir " si tienes algun ticket de descuento dime de cuanto es"
+	leer descuento
+	escribir " entonces el total a pagar es" (preciotorta * cantidadcomprada ) - descuento 
+FinAlgoritmo
