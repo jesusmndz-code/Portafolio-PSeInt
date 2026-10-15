@@ -1,0 +1,15 @@
+==================================================================
+        PLAN DE ESTRUCTURACIÓN - AGENCIA DE MARKETING E IA
+==================================================================
+
+1. PROPÓSITO CENTRAL:
+Ayudar a negocios locales y emprendedores a automatizar sus ventas, 
+atención al cliente y estrategias digitales utilizando Inteligencia Artificial.
+
+2. SERVICIO ESTRELLA DE LANZAMIENTO:
+Creación e integración de Agentes de WhatsApp automatizados las 24/7 
+para responder preguntas frecuentes, agendar citas y calificar leads.
+
+3. PRIMER PROTOTIPO: "Agente de WhatsApp - Captador de Clientes"
+Un bot que atienda a los dueños de negocios interesados en contratar 
+nuestros servicios de marketing, evaluando si califican para una asesoría.

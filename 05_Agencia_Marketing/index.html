@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulador de Agente de WhatsApp - Agencia de IA</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #e5ddd5; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .phone-container { width: 360px; height: 600px; background-color: #fff; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow: hidden; border: 4px solid #333; }
+        .chat-header { background-color: #075e54; color: white; padding: 15px; display: flex; align-items: center; font-weight: bold; }
+        .chat-header .status { font-size: 11px; color: #cfd8dc; font-weight: normal; margin-left: auto; }
+        .chat-box { flex: 1; padding: 15px; background-image: url('https://githubusercontent.com'); background-size: cover; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        .message { max-width: 75%; padding: 8px 12px; border-radius: 8px; font-size: 14px; line-height: 1.4; margin-bottom: 2px; }
+        .bot { background-color: white; align-self: flex-start; box-shadow: 0 1px 1px rgba(0,0,0,0.1); }
+        .user { background-color: #dcf8c6; align-self: flex-end; box-shadow: 0 1px 1px rgba(0,0,0,0.1); text-align: right; }
+        .input-area { padding: 10px; background-color: #f0f0f0; display: flex; gap: 8px; }
+        input[type="text"] { flex: 1; padding: 10px; border-radius: 20px; border: 1px solid #ccc; outline: none; font-size: 14px; }
+        button { background-color: #075e54; color: white; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer; font-weight: bold; outline: none; }
+        button:hover { background-color: #128c7e; }
+        .options-container { display: flex; flex-direction: column; gap: 5px; margin-top: 5px; }
+        .opt-btn { background-color: #e1f5fe; color: #0288d1; border: 1px solid #b3e5fc; padding: 6px; border-radius: 5px; cursor: pointer; font-size: 12px; text-align: left; }
+        .opt-btn:hover { background-color: #b3e5fc; }
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+        <!-- Cabecera del Chat tipo WhatsApp -->
+        <div class="chat-header">
+            <div>🤖 Agente IA - Agencia</div>
+            <div class="status">en línea</div>
+        </div>
+
+        <!-- Caja de mensajes -->
+        <div id="chatBox" class="chat-box">
+            <div class="message bot">¡Hola! Bienvenido a nuestra Agencia de Automatización de Marketing e IA.</div>
+            <div class="message bot">Para darte una atención personalizada, ¿cuál es tu nombre?</div>
+        </div>
+
+        <!-- Área de escritura del usuario -->
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí..." onkeypress="evaluarTecla(event)">
+            <button onclick="procesarMensaje()">></button>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales para controlar el flujo de la conversación (Igual que en PSeInt)
+        let paso = 1; 
+        let nombreCliente = "";
+
+        function evaluarTecla(event) {
+            if (event.key === "Enter") {
+                procesarMensaje();
+            }
+        }
+
+        function agregarMensaje(texto, emisor) {
+            let chatBox = document.getElementById("chatBox");
+            let div = document.createElement("div");
+            div.className = "message " + emisor;
+            div.innerHTML = texto;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll hacia abajo
+        }
+
+        function procesarMensaje() {
+            let input = document.getElementById("userInput");
+            let mensaje = input.value.trim();
+            if (mensaje === "") return;
+
+            // Mostrar el mensaje del usuario en la pantalla
+            agregarMensaje(mensaje, "user");
+            input.value = ""; // Limpiar el campo de texto
+
+            // Ejecución de la lógica paso a paso
+            setTimeout(() => {
+                if (paso === 1) {
+                    nombreCliente = mensaje;
+                    agregarMensaje(`Un placer saludarte, <strong>${nombreCliente}</strong>. ¿En qué servicio de marketing digital estás interesado hoy?`, "bot");
+                    
+                    // Crear menú de opciones interactivo (Equivalente al Segun Opcion de PSeInt)
+                    let opcionesHTML = `
+                        <div class="options-container">
+                            <div class="opt-btn" onclick="elegirOpcion(1)">1. Deseo un Agente de WhatsApp automatizado.</div>
+                            <div class="opt-btn" onclick="elegirOpcion(2)">2. Deseo campañas de publicidad digital.</div>
+                            <div class="opt-btn" onclick="elegirOpcion(3)">3. Hablar con un asesor humano.</div>
+                        </div>
+                    `;
+                    agregarMensaje(opcionesHTML, "bot");
+                    paso = 2;
+                }
+            }, 800);
+        }
+
+        function elegirOpcion(opcion) {
+            // Mostrar la opción seleccionada como si la escribiera el usuario
+            let textosOpciones = {
+                1: "1. Deseo un Agente de WhatsApp automatizado.",
+                2: "2. Deseo campañas de publicidad digital.",
+                3: "3. Hablar con un asesor humano."
+            };
+            agregarMensaje(textosOpciones[opcion], "user");
+
+            setTimeout(() => {
+                if (opcion === 1) {
+                    agregarMensaje("¡Excelente elección! Nuestros agentes de IA incrementan las ventas un 40% de forma automática.", "bot");
+                    agregarMensaje("¿Cuentas con un presupuesto base para invertir en tus herramientas digitales?", "bot");
+                    
+                    let presupuestoHTML = `
+                        <div class="options-container">
+                            <div class="opt-btn" onclick="evaluarPresupuesto(true)">Sí, cuento con presupuesto.</div>
+                            <div class="opt-btn" onclick="evaluarPresupuesto(false)">No por el momento.</div>
+                        </div>
+                    `;
+                    agregarMensaje(presupuestoHTML, "bot");
+                } else if (opcion === 2) {
+                    agregarMensaje("Diseñamos estrategias de tráfico pago de alto impacto en Facebook, Instagram y TikTok Ads. Un asesor comercial te contactará por WhatsApp para enviarte una propuesta.", "bot");
+                } else if (opcion === 3) {
+                    agregarMensaje("Entendido. Transfiriendo este chat a uno de nuestros asesores humanos... Por favor, mantente en línea.", "bot");
+                }
+            }, 800);
+        }
+
+        function evaluarPresupuesto(tienePresupuesto) {
+            let respuestaUser = tienePresupuesto ? "Sí, cuento con presupuesto." : "No por el momento.";
+            agregarMensaje(respuestaUser, "user");
+
+            setTimeout(() => {
+                if (tienePresupuesto) {
+                    agregarMensaje(`¡Perfecto, <strong>${nombreCliente}</strong>! Calificas para una auditoría de automatización gratuita de 15 minutos. En breve un asesor te enviará nuestro enlace de agenda corporativa.`, "bot");
+                } else {
+                    agregarMensaje("Entendido. No hay problema. Te enviaremos nuestro catálogo de soluciones en formato PDF a este chat para que evalúes nuestras opciones iniciales.", "bot");
+                }
+            }, 800);
+        }
+    </script>
+
+</body>
+</html>
